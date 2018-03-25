@@ -44,6 +44,7 @@ export default {
   },
   methods: {
     refresh: function refresh() {
+      this.exercises.length = 0;
       let count = 0;
       while (count < 100) {
         this.exercises.push(generateExercise());
