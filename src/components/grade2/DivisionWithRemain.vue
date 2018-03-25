@@ -1,17 +1,21 @@
 <template>
   <div class="divisionWithRemain">
+    <navigation></navigation>
     <h1>{{ title }}</h1>
-    <ul id="example-1">
+    <md-content>
+    <ul>
       <li v-for="i in exercises" :key="i.id">
         {{ i.division }} &divide; {{ i.divider}} = &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
       </li>
     </ul>
-    <button v-on:click="refresh">更新题库</button>
-    <button v-on:click="print">打印</button>
+    </md-content>
+    <md-button class="md-raised md-primary" v-on:click="refresh">更新题库</md-button>
+    <md-button class="md-raised md-primary" v-on:click="print">打印</md-button>
   </div>
 </template>
 
 <script>
+import Navigation from '@/components/Navigation';
 
 function randomInRange(min, max) {
   return Math.floor((Math.random() * ((max - min) + 1)) + min);
@@ -32,6 +36,9 @@ function generateExercise() {
 
 export default {
   name: 'DivisionWithRemain',
+  components: {
+    navigation: Navigation,
+  },
   mounted: function foo() {
     this.refresh();
   },
@@ -60,19 +67,24 @@ export default {
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
-<style scoped>
-h1, h2 {
-  font-weight: normal;
-}
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-a {
-  color: #42b983;
-}
+<style lang="scss" scoped>
+  h1, h2 {
+    font-weight: normal;
+    font-color: white;
+  }
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  li {
+    display: inline-block;
+    margin: 0 10px;
+  }
+  .md-content {
+    width: 100%;
+    height: 100%;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+  }
 </style>
