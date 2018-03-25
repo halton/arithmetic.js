@@ -1,12 +1,12 @@
 # Arithmetic.js
 
-这是一个基于[Vue.js](https://vuejs.org/)的项目，用来自动小学生用来练习的口算习题，用户可以试用[在线版本](http://arithmetic-js-arithmetic-js.7e14.starter-us-west-2.openshiftapps.com), 感谢[Red Hat® OpenShift](https://www.openshift.com/)提供的免费服务器。
+这是一个基于[Vue.js](https://vuejs.org/)的项目，用来自动小学生用来练习的口算习题，用户可以试用[在线版本](http://arithmetic-js-arithmetic-js.7e14.starter-us-west-2.openshiftapps.com:8081), 感谢[Red Hat® OpenShift](https://www.openshift.com/)提供的免费服务器。
 
 中国的小学生教育很重口算教育，本人孩子从一年级10以内的加减法开始就要开始练习，并要计算时间。随着年级的增加，题目也越来越复杂，但互联网上能搜到的不太符合老师的要求，书店的书还有成本，并且变化性不强。笨一点的办法是家长往往要自己靠脑子想出来，这样重复性太强。
 
 这个项目就是要自动随机生成相应的题目，并支持打印。这个项目将以开源免费方式存在，欢迎大家提需求已丰富题库。
 
-This is a simple [Vue.js](https://vuejs.org/) based project to auto-gen elementary arithmetic exercises, and support print. It is very useful for entry level elementary students. You could try the [live version](http://arithmetic-js-arithmetic-js.7e14.starter-us-west-2.openshiftapps.com). Thanks for the free service supporting of [Red Hat® OpenShift](https://www.openshift.com/).
+This is a simple [Vue.js](https://vuejs.org/) based project to auto-gen elementary arithmetic exercises, and support print. It is very useful for entry level elementary students. You could try the [live version](http://arithmetic-js-arithmetic-js.7e14.starter-us-west-2.openshiftapps.com:8081). Thanks for the free service supporting of [Red Hat® OpenShift](https://www.openshift.com/).
 
 # Features (特性)
 * No app install required. (基于浏览器，无需安装任何软件)
