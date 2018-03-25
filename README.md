@@ -1,3 +1,5 @@
+![QRCode of arichmetic.js](/qrcode_arichmetic_js.png)
+
 # Arithmetic.js
 
 这是一个基于[Vue.js](https://vuejs.org/)的项目，用来自动小学生用来练习的口算习题，用户可以试用[在线版本](http://tiny.cc/y023ry), 感谢[Red Hat® OpenShift](https://www.openshift.com/)提供的免费服务器。
