@@ -1,11 +1,11 @@
 <template>
-  <div class="divisionWithRemain">
+  <div class="Subtraction">
     <navigation></navigation>
     <h1>{{ title }}</h1>
     <md-content>
     <ul>
       <li v-for="i in exercises" :key="i.id">
-        {{ i.total }} &divide; {{ i.divider}} = &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+        {{ i.total }} - {{ i.subtrahend}} = &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
       </li>
     </ul>
     </md-content>
@@ -19,20 +19,17 @@ import Navigation from '@/components/Navigation';
 import { randomInRange } from '../../utils';
 
 function generateExercise() {
-  // Get a dividend in range [20, 90]
-  const mult1 = randomInRange(2, 9);
-  const mult2 = randomInRange(2, 9);
-  const remain = randomInRange(2, mult2);
-  const total = (mult1 * mult2) + remain;
+  const total = randomInRange(2, 99);
+  const subtrahend = randomInRange(2, total);
 
   return {
     total,
-    divider: mult1,
+    subtrahend,
   };
 }
 
 export default {
-  name: 'DivisionWithRemain',
+  name: 'Subtraction',
   components: {
     navigation: Navigation,
   },
@@ -41,7 +38,7 @@ export default {
   },
   data() {
     return {
-      title: '一位数除法带余数',
+      title: '100以内减法',
       exercises: [
       ],
     };
