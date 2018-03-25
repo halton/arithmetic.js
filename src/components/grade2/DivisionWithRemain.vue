@@ -16,10 +16,7 @@
 
 <script>
 import Navigation from '@/components/Navigation';
-
-function randomInRange(min, max) {
-  return Math.floor((Math.random() * ((max - min) + 1)) + min);
-}
+import { randomInRange } from '../../utils';
 
 function generateExercise() {
   // Get a dividend in range [20, 90]
