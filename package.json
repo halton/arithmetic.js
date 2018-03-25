@@ -1,7 +1,7 @@
 {
-  "name": "my-project",
+  "name": "arithmetic.js",
   "version": "1.0.0",
-  "description": "A Vue.js project",
+  "description": "A project to generate elementary arithmetic exercises.",
   "author": "Halton Huo <halton.huo@gmail.com>",
   "private": true,
   "scripts": {
