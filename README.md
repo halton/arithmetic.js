@@ -1,4 +1,4 @@
-![QRCode of arichmetic.js](/qrcode_arichmetic_js.png)
+![QRCode of arichmetic.js](/src/assets/qrcode_arichmetic_js.png)
 
 # Arithmetic.js
 
