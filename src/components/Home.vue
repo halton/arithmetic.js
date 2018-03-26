@@ -45,17 +45,13 @@
       ></v-text-field>
       <v-spacer></v-spacer>
     </v-toolbar>
-    <v-content>
-      <v-container fluid fill-height >
-        <v-layout justify-center align-center>aasdfadsf
-        </v-layout>
-      </v-container>
-    </v-content>
+    <exam-content></exam-content>
   </v-app>
 </template>
 
 <script>
 import ByGrade from '@/components/ByGrade';
+import ExamContent from '@/components/ExamContent';
 
 export default {
   data: () => ({
@@ -66,6 +62,7 @@ export default {
   },
   components: {
     'by-grade': ByGrade,
+    'exam-content': ExamContent,
   },
 };
 </script>

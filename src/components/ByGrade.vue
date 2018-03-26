@@ -30,7 +30,6 @@ export default {
       {
         icon: 'looks_one',
         text: '一年级',
-        expander: true,
         exams: [
           { icon: 'folder', text: '100以内加法' },
           { icon: 'folder', text: '100以内减法' },
