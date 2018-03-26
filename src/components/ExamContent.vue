@@ -3,17 +3,15 @@
     <h1>{{ title }}</h1>
     <v-content>
       <v-container fluid fill-height >
-        <v-layout justify-center align-center>
+        <v-layout justify-left align-left>
            <ul>
             <li v-for="i in exercises" :key="i.id">
-              {{ i }}
+              <font size="5">{{ i }}</font>
             </li>
           </ul>
         </v-layout>
       </v-container>
     </v-content>
-    <v-button color="info" @click="refresh">更新题库</v-button>
-    <v-button color="info" @click="print">打印</v-button>
   </div>
 </template>
 
@@ -21,12 +19,24 @@
 
 export default {
   name: 'ExamContent',
+  props: {
+    title: {
+      type: String,
+      required: true,
+      default: () => {
+        return '';
+      },
+    },
+    exercises: {
+      type: Array,
+      required: true,
+      default: () => {
+        return [];
+      },
+    },
+  },
   data() {
     return {
-      title: '一位数除法带余数',
-      exercises: [
-        'ssss', '2222', '3333'
-      ],
     };
   },
 };
@@ -41,7 +51,7 @@ export default {
   }
   ul {
     list-style-type: none;
-    padding: 0;
+    padding: 5;
   }
   li {
     display: inline-block;
@@ -51,7 +61,7 @@ export default {
     width: 100%;
     height: 100%;
     display: inline-flex;
-    justify-content: center;
-    align-items: center;
+    justify-content: left;
+    align-items: left;
   }
 </style>

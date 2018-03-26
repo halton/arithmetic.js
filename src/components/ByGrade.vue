@@ -6,12 +6,12 @@
         <div slot="header"><v-icon>{{ grade.icon }}</v-icon> {{ grade.text }}</div>
         <v-list dense v-if="grade.exams.length">
           <template v-for="exam in grade.exams">
-            <v-list-tile @click="">
+            <v-list-tile @click="$emit('update-content', exam.title, exam.type)">
               <v-list-tile-action>
                 <v-icon>{{ exam.icon }}</v-icon>
               </v-list-tile-action>
               <v-list-tile-content>
-                <v-list-tile-title>{{ exam.text }}</v-list-tile-title>
+                <v-list-tile-title>{{ exam.title }}</v-list-tile-title>
               </v-list-tile-content>
             </v-list-tile>
           </template>
@@ -31,15 +31,15 @@ export default {
         icon: 'looks_one',
         text: '一年级',
         exams: [
-          { icon: 'folder', text: '100以内加法' },
-          { icon: 'folder', text: '100以内减法' },
+          { icon: 'folder', title: '100以内加法', type: 'genAddUnder100' },
+          { icon: 'folder', title: '100以内减法', type: 'genSubUnder100' },
         ],
       },
       {
         icon: 'looks_two',
         text: '二年级',
         exams: [
-          { icon: 'folder', text: '一位数除法带余数' },
+          { icon: 'folder', title: '一位数除法带余数', type: 'genDivisionWithRemain' },
         ],
       },
       {
@@ -62,7 +62,6 @@ export default {
         text: '六年级',
         exams: [],
       },
-
     ],
   }),
 };

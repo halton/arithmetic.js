@@ -7,7 +7,7 @@
         v-model="drawer"
       >
       <v-list dense>
-        <by-grade></by-grade>
+        <by-grade v-on:update-content="onUpdateContent"></by-grade>
         <v-list-tile @click="">
           <v-list-tile-action>
             <v-icon>backup</v-icon>
@@ -45,24 +45,59 @@
       ></v-text-field>
       <v-spacer></v-spacer>
     </v-toolbar>
-    <exam-content></exam-content>
+    <exam-content :title="contentTitle" :exercises="contentExercises"></exam-content>
+    <div>
+      <v-btn color="info" @click="onRefresh">更新题库</v-btn>
+      <v-btn color="info" @click="onPrint">打印</v-btn>
+    </div>
   </v-app>
 </template>
 
 <script>
 import ByGrade from '@/components/ByGrade';
 import ExamContent from '@/components/ExamContent';
+import * as utils from '../utils';
 
 export default {
   data: () => ({
     drawer: null,
+    contentTitle: '',
+    contentType: '',
+    contentExercises: [],
   }),
-  props: {
-    source: String,
-  },
   components: {
     'by-grade': ByGrade,
     'exam-content': ExamContent,
+  },
+  methods: {
+    onUpdateContent: function onUpdateContent(title, type) {
+      this.contentTitle = title;
+      this.contentType = type;
+      this.contentExercises.length = 0;
+      let count = 0;
+      while (count < 100) {
+        switch (type) {
+          case 'genAddUnder100':
+            this.contentExercises.push(utils.genAddUnder100());
+            break;
+          case 'genSubUnder100':
+            this.contentExercises.push(utils.genSubUnder100());
+            break;
+          case 'genDivisionWithRemain':
+            this.contentExercises.push(utils.genDivisionWithRemain());
+            break;
+          default:
+            break;
+        }
+        count += 1;
+      }
+    },
+    onRefresh: function onRefresh() {
+      this.onUpdateContent(this.contentTitle, this.contentType);
+    },
+    onPrint: function onPrint() {
+      window.print();
+    },
   },
 };
 </script>
