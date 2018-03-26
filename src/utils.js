@@ -25,12 +25,12 @@ export function genSub(min, max) {
 
 export function genAddUnder100() {
   const add = genAdd(2, 99);
-  return add.addend1 + ' + ' + add.addend2 + ' = ____';
+  return `${add.addend1} + ${add.addend2} = ____`;
 }
 
 export function genSubUnder100() {
   const add = genSub(2, 99);
-  return add.total + ' - ' + add.subtrahend + ' = ____';
+  return `${add.total} - ${add.subtrahend} = ____`;
 }
 
 export function genDivisionWithRemain() {
@@ -40,5 +40,5 @@ export function genDivisionWithRemain() {
   const remain = randomInRange(2, mult2);
   const total = (mult1 * mult2) + remain;
 
-  return total + ' ÷ ' + mult1 + ' = ____';
+  return `${total} ÷ ${mult1} = ____`;
 }

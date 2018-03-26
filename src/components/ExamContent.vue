@@ -23,16 +23,12 @@ export default {
     title: {
       type: String,
       required: true,
-      default: () => {
-        return '';
-      },
+      default: () => '',
     },
     exercises: {
       type: Array,
       required: true,
-      default: () => {
-        return [];
-      },
+      default: () => [],
     },
   },
   data() {

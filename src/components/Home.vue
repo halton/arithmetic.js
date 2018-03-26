@@ -8,7 +8,7 @@
       >
       <v-list dense>
         <by-grade v-on:update-content="onUpdateContent"></by-grade>
-        <v-list-tile @click="">
+        <v-list-tile @click="onUpload">
           <v-list-tile-action>
             <v-icon>backup</v-icon>
           </v-list-tile-action>
@@ -16,7 +16,7 @@
             <v-list-tile-title>上传题目</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile @click="">
+        <v-list-tile @click="onFeedback">
           <v-list-tile-action>
             <v-icon>feedback</v-icon>
           </v-list-tile-action>
@@ -24,7 +24,7 @@
             <v-list-tile-title>反馈</v-list-tile-title>
           </v-list-tile-content>
         </v-list-tile>
-        <v-list-tile @click="">
+        <v-list-tile @click="onContributors">
           <v-list-tile-action>
             <v-icon>people</v-icon>
           </v-list-tile-action>
@@ -98,6 +98,10 @@ export default {
     onPrint: function onPrint() {
       window.print();
     },
+    // TODO(halton): Add below support.
+    onUpload: () => '',
+    onFeedback: () => '',
+    onContributors: () => '',
   },
 };
 </script>
