@@ -1,12 +1,15 @@
 <template>
-  <v-app id="inspire" dark>
-    <v-navigation-drawer
-        fixed
-        clipped
-        app
-        v-model="drawer"
-      >
-      <v-list dense>
+  <v-app id="inspire" dark align-top>
+    <v-navigation-drawer fixed clipped app v-model="drawer">
+      <v-list dense fluid>
+        <v-list-tile @click="onUpload">
+          <v-list-tile-action>
+            <v-icon>folder</v-icon>
+          </v-list-tile-action>
+          <v-list-tile-content>
+            <v-list-tile-title>已有习题</v-list-tile-title>
+          </v-list-tile-content>
+        </v-list-tile>
         <by-grade v-on:update-content="onUpdateContent"></by-grade>
         <v-list-tile @click="onUpload">
           <v-list-tile-action>
@@ -37,19 +40,33 @@
     <v-toolbar app fixed clipped-left>
       <v-toolbar-side-icon @click.native="drawer = !drawer"></v-toolbar-side-icon>
       <span class="title ml-3 mr-5">小数数学题集</span>
-      <v-text-field
-        solo-inverted
-        flat
-        label="Search"
-        prepend-icon="search"
-      ></v-text-field>
+      <v-text-field solo-inverted flat label="Search" prepend-icon="search"></v-text-field>
       <v-spacer></v-spacer>
     </v-toolbar>
-    <exam-content :title="contentTitle" :exercises="contentExercises"></exam-content>
-    <div>
-      <v-btn color="info" @click="onRefresh">更新题库</v-btn>
-      <v-btn color="info" @click="onPrint">打印</v-btn>
-    </div>
+    <v-container>
+      <v-layout column wrap>
+        <v-flex>
+          <v-card>
+           <v-layout row wrap>
+              <v-spacer></v-spacer>
+              <h1>{{ contentTitle }}</h1>
+              <v-spacer></v-spacer>
+              <v-card color="info">
+                <v-toolbar>
+                  <v-btn color="info" @click="onRefresh">更新题库</v-btn>
+                  <v-btn color="info" @click="onPrint">打印</v-btn>
+                </v-toolbar>
+              </v-card>
+            </v-layout>
+          </v-card>
+        </v-flex>
+        <v-flex>
+          <v-card>
+            <exam-content :title="contentTitle" :exercises="contentExercises"></exam-content>
+          </v-card>
+        </v-flex>
+      </v-layout>
+    </v-container>
   </v-app>
 </template>
 

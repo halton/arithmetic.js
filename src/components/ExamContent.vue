@@ -1,18 +1,14 @@
 <template>
-  <div>
-    <h1>{{ title }}</h1>
-    <v-content>
-      <v-container fluid fill-height >
-        <v-layout justify-left align-left>
-           <ul>
-            <li v-for="i in exercises" :key="i.id">
-              <font size="5">{{ i }}</font>
-            </li>
-          </ul>
-        </v-layout>
-      </v-container>
-    </v-content>
-  </div>
+  <v-container fluid>
+    <v-layout row wrap>
+    <!-- column number = 12 / {number_xs_blow} -->
+      <v-flex xs3 v-for="i in exercises" :key="i">
+        <v-card flat tile>
+          <font size="4">{{ i }}</font>
+        </v-card>
+      </v-flex>
+    </v-layout>
+  </v-container>
 </template>
 
 <script>
@@ -52,12 +48,5 @@ export default {
   li {
     display: inline-block;
     margin: 0 10px;
-  }
-  .md-content {
-    width: 100%;
-    height: 100%;
-    display: inline-flex;
-    justify-content: left;
-    align-items: left;
   }
 </style>
