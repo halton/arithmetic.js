@@ -8,7 +8,9 @@
             <div slot="header"><v-icon>{{ grade.icon }}</v-icon> {{ grade.text }}</div>
             <v-list dense v-if="grade.exams.length">
               <template v-for="exam in grade.exams">
-                <v-list-tile @click="$emit('update-content', exam.title, exam.type)">
+                <v-list-tile @click="$emit('update-content',
+                                           exam.title + ' (共' + exam.count + '题)',
+                                           exam.refresh(exam.count))">
                   <v-list-tile-action>
                     <v-icon>{{ exam.icon }}</v-icon>
                   </v-list-tile-action>
@@ -26,6 +28,8 @@
 </template>
 
 <script>
+import * as utils from '../utils';
+
 export default {
   name: 'ExamCollectByGrade',
   data: () => ({
@@ -34,15 +38,52 @@ export default {
         icon: 'looks_one',
         text: '一年级',
         exams: [
-          { icon: 'folder', title: '100以内加法', type: 'genAddUnder100' },
-          { icon: 'folder', title: '100以内减法', type: 'genSubUnder100' },
+          {
+            icon: 'folder',
+            title: '100以内加法',
+            count: 100,
+            refresh: (count) => function () {
+              const result = [];
+              let c = 0;
+              while (c < count) {
+                result.push(utils.genAddUnder100());
+                c += 1;
+              }
+              return result;
+            },
+          },
+          { icon: 'folder',
+            title: '100以内减法',
+            count: 100,
+            refresh: (count) => function () {
+              const result = [];
+              let c = 0;
+              while (c < count) {
+                result.push(utils.genSubUnder100());
+                c += 1;
+              }
+              return result;
+            },
+          },
         ],
       },
       {
         icon: 'looks_two',
         text: '二年级',
         exams: [
-          { icon: 'folder', title: '一位数除法带余数', type: 'genDivisionWithRemain' },
+          { icon: 'folder',
+            title: '一位数除法带余数',
+            count: 100,
+            refresh: (count) => function () {
+              const result = [];
+              let c = 0;
+              while (c < count) {
+                result.push(utils.genDivisionWithRemain());
+                c += 1;
+              }
+              return result;
+            },
+          },
         ],
       },
       {

@@ -71,7 +71,7 @@ export default {
   data: () => ({
     drawer: null,
     contentTitle: '',
-    contentType: '',
+    contentUpdateClosure: {},
     contentExercises: [],
   }),
   components: {
@@ -79,31 +79,14 @@ export default {
     'exam-content': ExamContent,
   },
   methods: {
-    onUpdateContent: function onUpdateContent(title, type) {
+    onUpdateContent: function onUpdateContent(title, newClosure) {
       this.contentTitle = title;
-      this.contentType = type;
-      this.contentExercises.length = 0;
-      let count = 0;
-      while (count < 100) {
-        switch (type) {
-          case 'genAddUnder100':
-            this.contentExercises.push(utils.genAddUnder100());
-            break;
-          case 'genSubUnder100':
-            this.contentExercises.push(utils.genSubUnder100());
-            break;
-          case 'genDivisionWithRemain':
-            this.contentExercises.push(utils.genDivisionWithRemain());
-            break;
-          default:
-            break;
-        }
-        count += 1;
-      }
+      this.contentUpdateClosure = newClosure;
+      this.onRefresh();
       this.drawer = false;
     },
     onRefresh: function onRefresh() {
-      this.onUpdateContent(this.contentTitle, this.contentType);
+      this.contentExercises = this.contentUpdateClosure();
     },
     onPrint: function onPrint() {
       window.print();
