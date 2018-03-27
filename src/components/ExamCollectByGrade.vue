@@ -27,7 +27,7 @@
 
 <script>
 export default {
-  name: 'ByGrade',
+  name: 'ExamCollectByGrade',
   data: () => ({
     grades: [
       {
