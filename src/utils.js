@@ -1,4 +1,3 @@
-// eslint-disable-next-line
 export function randomInRange(min, max) {
   return Math.floor((Math.random() * ((max - min) + 1)) + min);
 }
@@ -37,8 +36,8 @@ export function genDivisionWithRemain() {
   // Get a dividend in range [20, 90]
   const mult1 = randomInRange(2, 9);
   const mult2 = randomInRange(2, 9);
-  const remain = randomInRange(2, mult2);
+  const remain = randomInRange(1, mult2 - 1);
   const total = (mult1 * mult2) + remain;
 
-  return `${total} ÷ ${mult1} = ____`;
+  return `${total} ÷ ${mult2} = ____`;
 }
