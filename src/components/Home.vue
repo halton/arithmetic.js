@@ -1,5 +1,5 @@
 <template>
-  <v-app id="inspire" grey lighten-4 align-top>
+  <v-app id="inspire" align-top app light>
     <v-navigation-drawer fixed clipped app v-model="drawer">
       <v-list dense fluid>
         <exam-collect-by-grade v-on:update-content="onUpdateContent"></exam-collect-by-grade>
@@ -59,6 +59,10 @@
         </v-flex>
       </v-layout>
     </v-container>
+    <v-footer class="pa-3">
+      <v-spacer></v-spacer>
+      <div>霍海涛 &copy; {{ new Date().getFullYear() }}</div>
+    </v-footer>
   </v-app>
 </template>
 

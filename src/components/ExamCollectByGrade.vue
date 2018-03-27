@@ -1,12 +1,14 @@
 <template>
   <v-expansion-panel>
     <v-expansion-panel-content>
-      <div slot="header"><v-icon>folder</v-icon>&nbsp;&nbsp;已有习题集（按年级）</div>
+      <div slot="header"><v-icon>folder</v-icon>&nbsp;已有习题集（按年级）</div>
       <template v-for="grade in grades">
         <!-- eslint-disable-next-line -->
         <v-expansion-panel>
           <v-expansion-panel-content>
-            <div slot="header"><v-icon>{{ grade.icon }}</v-icon> {{ grade.text }}</div>
+            <div slot="header">
+              &nbsp;<v-icon>{{ grade.icon }}</v-icon>&nbsp;{{ grade.text }}
+            </div>
             <v-list dense v-if="grade.exams.length">
               <template v-for="exam in grade.exams">
                 <!-- eslint-disable-next-line -->
@@ -41,7 +43,7 @@ export default {
         text: '一年级',
         exams: [
           {
-            icon: 'folder',
+            icon: 'launch',
             title: '100以内加法',
             count: 100,
             // eslint-disable-next-line
@@ -55,7 +57,7 @@ export default {
               return result;
             },
           },
-          { icon: 'folder',
+          { icon: 'launch',
             title: '100以内减法',
             count: 100,
             // eslint-disable-next-line
@@ -75,7 +77,7 @@ export default {
         icon: 'looks_two',
         text: '二年级',
         exams: [
-          { icon: 'folder',
+          { icon: 'launch',
             title: '一位数除法带余数',
             count: 100,
             // eslint-disable-next-line
