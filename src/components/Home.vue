@@ -108,6 +108,7 @@ export default {
         }
         count += 1;
       }
+      this.drawer = false;
     },
     onRefresh: function onRefresh() {
       this.onUpdateContent(this.contentTitle, this.contentType);
