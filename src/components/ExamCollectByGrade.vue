@@ -3,11 +3,13 @@
     <v-expansion-panel-content>
       <div slot="header"><v-icon>folder</v-icon>&nbsp;&nbsp;已有习题集（按年级）</div>
       <template v-for="grade in grades">
+        <!-- eslint-disable-next-line -->
         <v-expansion-panel>
           <v-expansion-panel-content>
             <div slot="header"><v-icon>{{ grade.icon }}</v-icon> {{ grade.text }}</div>
             <v-list dense v-if="grade.exams.length">
               <template v-for="exam in grade.exams">
+                <!-- eslint-disable-next-line -->
                 <v-list-tile @click="$emit('update-content',
                                            exam.title + ' (共' + exam.count + '题)',
                                            exam.refresh(exam.count))">
@@ -42,7 +44,8 @@ export default {
             icon: 'folder',
             title: '100以内加法',
             count: 100,
-            refresh: (count) => function () {
+            // eslint-disable-next-line
+            refresh: count => function () {
               const result = [];
               let c = 0;
               while (c < count) {
@@ -55,7 +58,8 @@ export default {
           { icon: 'folder',
             title: '100以内减法',
             count: 100,
-            refresh: (count) => function () {
+            // eslint-disable-next-line
+            refresh: count => function () {
               const result = [];
               let c = 0;
               while (c < count) {
@@ -74,7 +78,8 @@ export default {
           { icon: 'folder',
             title: '一位数除法带余数',
             count: 100,
-            refresh: (count) => function () {
+            // eslint-disable-next-line
+            refresh: count => function () {
               const result = [];
               let c = 0;
               while (c < count) {

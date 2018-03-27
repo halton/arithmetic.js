@@ -65,7 +65,6 @@
 <script>
 import ExamCollectByGrade from '@/components/ExamCollectByGrade';
 import ExamContent from '@/components/ExamContent';
-import * as utils from '../utils';
 
 export default {
   data: () => ({
