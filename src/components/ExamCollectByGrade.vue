@@ -31,6 +31,7 @@
 
 <script>
 import * as utils from '../utils';
+import { Problem } from '../problem';
 
 export default {
   name: 'ExamCollectByGrade',
@@ -48,6 +49,8 @@ export default {
             refresh: count => function () {
               const result = [];
               let c = 0;
+              const p = new Problem('100以内加法', 2, ['+'], 2, 99);
+              console.log(p.toString());
               while (c < count) {
                 result.push(utils.genAddUnder100());
                 c += 1;
