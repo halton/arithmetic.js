@@ -2,7 +2,7 @@
   <v-container fluid>
     <v-layout row wrap>
     <!-- column number = 12 / {number_xs_blow} -->
-      <v-flex xs3 v-for="i in exercises" :key="i">
+      <v-flex xs3 v-for="i in exercises" :key="i.title">
         <v-card flat tile>
           <font size="4">{{ i }}</font>
         </v-card>
