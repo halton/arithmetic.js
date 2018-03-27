@@ -34,6 +34,7 @@
       <span class="title ml-3 mr-5">小数数学题集</span>
       <v-text-field solo-inverted flat label="Search" prepend-icon="search"></v-text-field>
       <v-spacer></v-spacer>
+      <accounts></accounts>
     </v-toolbar>
     <v-container>
       <v-layout column wrap>
@@ -67,6 +68,7 @@
 </template>
 
 <script>
+import Accounts from '@/components/Accounts';
 import ExamCollectByGrade from '@/components/ExamCollectByGrade';
 import ExamContent from '@/components/ExamContent';
 
@@ -78,6 +80,7 @@ export default {
     contentExercises: [],
   }),
   components: {
+    accounts: Accounts,
     'exam-collect-by-grade': ExamCollectByGrade,
     'exam-content': ExamContent,
   },
