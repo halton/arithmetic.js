@@ -1,5 +1,5 @@
 <template>
-  <v-app id="inspire" dark align-top>
+  <v-app id="inspire" grey lighten-4 align-top>
     <v-navigation-drawer fixed clipped app v-model="drawer">
       <v-list dense fluid>
         <exam-collect-by-grade v-on:update-content="onUpdateContent"></exam-collect-by-grade>
