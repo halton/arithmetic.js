@@ -2,15 +2,7 @@
   <v-app id="inspire" dark align-top>
     <v-navigation-drawer fixed clipped app v-model="drawer">
       <v-list dense fluid>
-        <v-list-tile @click="onUpload">
-          <v-list-tile-action>
-            <v-icon>folder</v-icon>
-          </v-list-tile-action>
-          <v-list-tile-content>
-            <v-list-tile-title>已有习题</v-list-tile-title>
-          </v-list-tile-content>
-        </v-list-tile>
-        <by-grade v-on:update-content="onUpdateContent"></by-grade>
+        <exam-collect-by-grade v-on:update-content="onUpdateContent"></exam-collect-by-grade>
         <v-list-tile @click="onUpload">
           <v-list-tile-action>
             <v-icon>backup</v-icon>
@@ -71,7 +63,7 @@
 </template>
 
 <script>
-import ByGrade from '@/components/ByGrade';
+import ExamCollectByGrade from '@/components/ExamCollectByGrade';
 import ExamContent from '@/components/ExamContent';
 import * as utils from '../utils';
 
@@ -83,7 +75,7 @@ export default {
     contentExercises: [],
   }),
   components: {
-    'by-grade': ByGrade,
+    'exam-collect-by-grade': ExamCollectByGrade,
     'exam-content': ExamContent,
   },
   methods: {
