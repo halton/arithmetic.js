@@ -13,8 +13,9 @@
               <template v-for="exam in grade.exams">
                 <!-- eslint-disable-next-line -->
                 <v-list-tile @click="$emit('update-content',
-                                           exam.title + ' (共' + exam.count + '题)',
-                                           exam.refresh(exam.count))">
+                                           exam.count,
+                                           exam.title,
+                                           exam.refreshCallback())">
                   <v-list-tile-action>
                     <v-icon>{{ exam.icon }}</v-icon>
                   </v-list-tile-action>
@@ -48,11 +49,9 @@ export default {
             title: '100以内加法',
             count: 100,
             // eslint-disable-next-line
-            refresh: count => function () {
+            refreshCallback: () => function(count) {
               const result = [];
               let c = 0;
-              const p = new Problem('100以内加法', 2, ['+'], 2, 99);
-              console.log(p.toString());
               while (c < count) {
                 result.push(utils.genAddUnder100());
                 c += 1;
@@ -64,7 +63,7 @@ export default {
             title: '100以内减法',
             count: 100,
             // eslint-disable-next-line
-            refresh: count => function () {
+            refreshCallback: () => function (count) {
               const result = [];
               let c = 0;
               while (c < count) {
@@ -84,7 +83,7 @@ export default {
             title: '一位数除法带余数',
             count: 100,
             // eslint-disable-next-line
-            refresh: count => function () {
+            refreshCallback: () => function(count) {
               const result = [];
               let c = 0;
               while (c < count) {

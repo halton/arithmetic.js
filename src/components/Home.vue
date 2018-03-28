@@ -40,17 +40,11 @@
       <v-layout column wrap>
         <v-flex>
           <v-card>
-           <v-layout row wrap>
-              <v-spacer></v-spacer>
-              <h1>{{ contentTitle }}</h1>
-              <v-spacer></v-spacer>
-              <v-card color="info">
-                <v-toolbar>
-                  <v-btn color="info" @click="onRefresh">更新题库</v-btn>
-                  <v-btn color="info" @click="onPrint">打印</v-btn>
-                </v-toolbar>
-              </v-card>
-            </v-layout>
+            <exam-content-toolbar
+              :title="contentTitle"
+              :count="contentExercisesCount"
+              v-on:update-content="onUpdateContent">
+            </exam-content-toolbar>
           </v-card>
         </v-flex>
         <v-flex>
@@ -71,31 +65,39 @@
 import Accounts from '@/components/Accounts';
 import ExamCollectByGrade from '@/components/ExamCollectByGrade';
 import ExamContent from '@/components/ExamContent';
+import ExamContentToolbar from '@/components/ExamContentToolbar';
 
 export default {
   data: () => ({
     drawer: null,
     contentTitle: '',
     contentUpdateClosure: {},
+    contentExercisesCount: 0,
     contentExercises: [],
   }),
   components: {
     accounts: Accounts,
     'exam-collect-by-grade': ExamCollectByGrade,
     'exam-content': ExamContent,
+    'exam-content-toolbar': ExamContentToolbar,
   },
   methods: {
-    onUpdateContent: function onUpdateContent(title, newClosure) {
-      this.contentTitle = title;
-      this.contentUpdateClosure = newClosure;
+    onUpdateContent: function onUpdateContent(count, title, newClosure) {
+      if (count) {
+        this.contentExercisesCount = count;
+      }
+      if (title) {
+        this.contentTitle = title;
+      }
+      if (newClosure) {
+        this.contentUpdateClosure = newClosure;
+      }
+
       this.onRefresh();
       this.drawer = false;
     },
     onRefresh: function onRefresh() {
-      this.contentExercises = this.contentUpdateClosure();
-    },
-    onPrint: function onPrint() {
-      window.print();
+      this.contentExercises = this.contentUpdateClosure(this.contentExercisesCount);
     },
     // TODO(halton): Add below support.
     onUpload: () => '',
