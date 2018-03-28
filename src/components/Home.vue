@@ -1,8 +1,12 @@
 <template>
-  <v-app id="inspire" align-top app light>
-    <v-navigation-drawer fixed clipped app v-model="drawer">
-      <v-list dense fluid>
-        <exam-collect-by-grade v-on:update-content="onUpdateContent"></exam-collect-by-grade>
+  <v-app id="inspire" align-top light>
+    <v-navigation-drawer
+      fixed
+      clipped
+      v-model="drawer"
+      app>
+      <v-list dense>
+        <ExamCollectByGrade v-on:update-content="onUpdateContent"></ExamCollectByGrade>
         <v-list-tile @click="onUpload">
           <v-list-tile-action>
             <v-icon>backup</v-icon>
@@ -29,35 +33,25 @@
         </v-list-tile>
       </v-list>
     </v-navigation-drawer>
-    <v-toolbar app fixed clipped-left>
-      <v-toolbar-side-icon @click.native="drawer = !drawer"></v-toolbar-side-icon>
-      <span class="title ml-3 mr-5">小数数学题集</span>
-      <v-text-field solo-inverted flat label="Search" prepend-icon="search"></v-text-field>
+    <v-toolbar fixed app clipped-left>
+      <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
+      <v-toolbar-title>小数数学题集 - {{ contentTitle }}</v-toolbar-title>
       <v-spacer></v-spacer>
-      <accounts></accounts>
+      <Accounts></Accounts>
     </v-toolbar>
-    <v-container>
-      <v-layout column wrap>
-        <v-flex>
-          <v-card>
-            <exam-content-toolbar
-              :title="contentTitle"
-              :count="contentExercisesCount"
-              v-on:update-content="onUpdateContent">
-            </exam-content-toolbar>
-          </v-card>
-        </v-flex>
-        <v-flex>
-          <v-card>
-            <exam-content :title="contentTitle" :exercises="contentExercises"></exam-content>
-          </v-card>
-        </v-flex>
-      </v-layout>
-    </v-container>
-    <v-footer class="pa-3">
-      <v-spacer></v-spacer>
-      <div>霍海涛 &copy; {{ new Date().getFullYear() }}</div>
-    </v-footer>
+    <v-content>
+      <v-container grid-list-md text-xs-center>
+        <v-layout row wrap>
+          <v-flex xs12 v-if="contentTitle">
+            <ExamContentToolbar :count="contentExercisesCount" v-on:update-content="onUpdateContent">
+            </ExamContentToolbar>
+          </v-flex>
+          <v-flex xs12>
+            <ExamContent :exercises="contentExercises"></ExamContent>
+          </v-flex>
+        </v-layout>
+      </v-container>
+    </v-content>
   </v-app>
 </template>
 
@@ -69,17 +63,17 @@ import ExamContentToolbar from '@/components/ExamContentToolbar';
 
 export default {
   data: () => ({
-    drawer: null,
-    contentTitle: '',
+    drawer: true,
+    contentTitle: null,
     contentUpdateClosure: {},
     contentExercisesCount: 0,
     contentExercises: [],
   }),
   components: {
-    accounts: Accounts,
-    'exam-collect-by-grade': ExamCollectByGrade,
-    'exam-content': ExamContent,
-    'exam-content-toolbar': ExamContentToolbar,
+    Accounts,
+    ExamCollectByGrade,
+    ExamContent,
+    ExamContentToolbar,
   },
   methods: {
     onUpdateContent: function onUpdateContent(count, title, newClosure) {
@@ -111,11 +105,9 @@ export default {
   #keep main .container {
     height: 660px;
   }
-
   .navigation-drawer__border {
     display: none;
   }
-
   .text {
     font-weight: 400;
   }
