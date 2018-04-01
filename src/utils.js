@@ -9,7 +9,7 @@ export function genAddWithTwoOperands(rangeOfOpt, rangeOfTotal) {
   if (rangeOfTotal.min > rangeOfOpt.max) {
     addend2 = randomInRange(Math.abs(rangeOfTotal.min - addend1), rangeOfOpt.max);
   } else {
-    total = randomInRange(addend1, rangeOfTotal.max)
+    total = randomInRange(addend1, rangeOfTotal.max);
     addend2 = total - addend1;
   }
 
