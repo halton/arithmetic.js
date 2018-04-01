@@ -49,28 +49,16 @@ export default {
             title: '100以内加法',
             count: 100,
             // eslint-disable-next-line
-            refreshCallback: () => function(count) {
-              const result = [];
-              let c = 0;
-              while (c < count) {
-                result.push(utils.genAddUnder100());
-                c += 1;
-              }
-              return result;
+            refreshCallback: () => {
+              return utils.makeExamGenerator(utils.genAddUnder100);
             },
           },
           { icon: 'launch',
             title: '100以内减法',
             count: 100,
             // eslint-disable-next-line
-            refreshCallback: () => function (count) {
-              const result = [];
-              let c = 0;
-              while (c < count) {
-                result.push(utils.genSubUnder100());
-                c += 1;
-              }
-              return result;
+            refreshCallback: () => {
+              return utils.makeExamGenerator(utils.genSubUnder100);
             },
           },
         ],
@@ -83,14 +71,8 @@ export default {
             title: '一位数除法带余数',
             count: 100,
             // eslint-disable-next-line
-            refreshCallback: () => function(count) {
-              const result = [];
-              let c = 0;
-              while (c < count) {
-                result.push(utils.genDivisionWithRemain());
-                c += 1;
-              }
-              return result;
+            refreshCallback: () => {
+              return utils.makeExamGenerator(utils.genDivisionWithRemain);
             },
           },
         ],

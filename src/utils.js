@@ -41,3 +41,15 @@ export function genDivisionWithRemain() {
 
   return `${total} ÷ ${mult2} = ____`;
 }
+
+export function makeExamGenerator(problem) {
+  return (numOfExcercies) => {
+    const result = [];
+    let c = 0;
+    while (c < numOfExcercies) {
+      result.push(problem());
+      c += 1;
+    }
+    return result;
+  };
+}
