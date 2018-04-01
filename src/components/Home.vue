@@ -43,7 +43,9 @@
       <v-container grid-list-md text-xs-center>
         <v-layout row wrap>
           <v-flex xs12 v-if="contentTitle">
-            <ExamContentToolbar :count="contentExercisesCount" v-on:update-content="onUpdateContent">
+            <ExamContentToolbar
+              :count="contentExercisesCount"
+              v-on:update-content="onUpdateContent">
             </ExamContentToolbar>
           </v-flex>
           <v-flex xs12>

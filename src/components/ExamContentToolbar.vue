@@ -30,7 +30,8 @@ export default {
     count: 0,
   },
   methods: {
-    onCountChanged: function onCountChanged(newVal, oldVal) {
+    // eslint-disable-next-line
+    onCountChanged: function(newVal, oldVal) {
       this.$emit('update-content', newVal);
     },
     onPrint: function onPrint() {

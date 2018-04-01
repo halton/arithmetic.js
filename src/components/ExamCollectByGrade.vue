@@ -34,7 +34,6 @@
 
 <script>
 import * as utils from '../utils';
-import { Problem } from '../problem';
 
 export default {
   name: 'ExamCollectByGrade',
@@ -50,7 +49,11 @@ export default {
             count: 100,
             // eslint-disable-next-line
             refreshCallback: () => {
-              return utils.makeExamGenerator(utils.genAddUnder100);
+              return utils.makeExamGenerator(
+                utils.genAddWithTwoOperands,
+                {min: 1, max: 99},
+                {min: 2, max: 99}
+              );
             },
           },
           { icon: 'launch',
@@ -58,7 +61,11 @@ export default {
             count: 100,
             // eslint-disable-next-line
             refreshCallback: () => {
-              return utils.makeExamGenerator(utils.genSubUnder100);
+              return utils.makeExamGenerator(
+                utils.genSubWithTwoOperands,
+                {min: 1, max:99},
+                {min: 2, max:99}
+              );
             },
           },
         ],
@@ -68,11 +75,29 @@ export default {
         text: '二年级',
         exams: [
           { icon: 'launch',
+            title: '9以内乘法',
+            count: 100,
+            // eslint-disable-next-line
+            refreshCallback: () => {
+              return utils.makeExamGenerator(
+                utils.genMultiWithTwoOperands,
+                {min:2, max: 9});
+            },
+          },
+          { icon: 'launch',
+            title: '一位数除法（整除）',
+            count: 100,
+            // eslint-disable-next-line
+            refreshCallback: () => {
+              return utils.makeExamGenerator(utils.genDivision, false);
+            },
+          },
+          { icon: 'launch',
             title: '一位数除法带余数',
             count: 100,
             // eslint-disable-next-line
             refreshCallback: () => {
-              return utils.makeExamGenerator(utils.genDivisionWithRemain);
+              return utils.makeExamGenerator(utils.genDivision, true);
             },
           },
         ],

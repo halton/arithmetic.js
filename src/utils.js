@@ -2,52 +2,44 @@ export function randomInRange(min, max) {
   return Math.floor((Math.random() * ((max - min) + 1)) + min);
 }
 
-export function genAdd(min, max) {
-  const addend1 = randomInRange(min, max);
-  const addend2 = randomInRange(min, max - addend1);
+export function genAddWithTwoOperands(rangeOfOpt, rangeOfTotal) {
+  const addend1 = randomInRange(rangeOfOpt.min, rangeOfOpt.max);
+  const total = randomInRange(addend1, rangeOfTotal.max)
+  const addend2 = total - addend1;
 
-  return {
-    addend1,
-    addend2,
-  };
+  return `${addend1} + ${addend2} = ____`;
 }
 
-export function genSub(min, max) {
-  const total = randomInRange(min, max);
-  const subtrahend = randomInRange(min, total);
+export function genSubWithTwoOperands(rangeOfOpt, rangeOfTotal) {
+  const total = randomInRange(rangeOfTotal.min, rangeOfTotal.max);
+  const subtrahend = randomInRange(rangeOfOpt.min, total);
 
-  return {
-    total,
-    subtrahend,
-  };
+  return `${total} - ${subtrahend} = ____`;
 }
 
-export function genAddUnder100() {
-  const add = genAdd(2, 99);
-  return `${add.addend1} + ${add.addend2} = ____`;
+export function genMultiWithTwoOperands(rangeOfOpt) {
+  const mult1 = randomInRange(rangeOfOpt.min, rangeOfOpt.max);
+  const mult2 = randomInRange(rangeOfOpt.min, rangeOfOpt.max);
+
+  return `${mult1} x ${mult2} = ____`;
 }
 
-export function genSubUnder100() {
-  const add = genSub(2, 99);
-  return `${add.total} - ${add.subtrahend} = ____`;
-}
-
-export function genDivisionWithRemain() {
+export function genDivision(needRemain) {
   // Get a dividend in range [20, 90]
   const mult1 = randomInRange(2, 9);
   const mult2 = randomInRange(2, 9);
-  const remain = randomInRange(1, mult2 - 1);
+  const remain = needRemain ? randomInRange(1, mult2 - 1) : 0;
   const total = (mult1 * mult2) + remain;
 
   return `${total} ÷ ${mult2} = ____`;
 }
 
-export function makeExamGenerator(problem) {
+export function makeExamGenerator(problem, min, max) {
   return (numOfExcercies) => {
     const result = [];
     let c = 0;
     while (c < numOfExcercies) {
-      result.push(problem());
+      result.push(problem(min, max));
       c += 1;
     }
     return result;
