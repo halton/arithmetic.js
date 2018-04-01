@@ -4,8 +4,14 @@ export function randomInRange(min, max) {
 
 export function genAddWithTwoOperands(rangeOfOpt, rangeOfTotal) {
   const addend1 = randomInRange(rangeOfOpt.min, rangeOfOpt.max);
-  const total = randomInRange(addend1, rangeOfTotal.max)
-  const addend2 = total - addend1;
+  let total = 0;
+  let addend2 = 0;
+  if (rangeOfTotal.min > rangeOfOpt.max) {
+    addend2 = randomInRange(Math.abs(rangeOfTotal.min - addend1), rangeOfOpt.max);
+  } else {
+    total = randomInRange(addend1, rangeOfTotal.max)
+    addend2 = total - addend1;
+  }
 
   return `${addend1} + ${addend2} = ____`;
 }

@@ -52,7 +52,7 @@ export default {
               return utils.makeExamGenerator(
                 utils.genAddWithTwoOperands,
                 {min: 1, max: 99},
-                {min: 2, max: 99}
+                {min: 2, max: 100}
               );
             },
           },
@@ -105,7 +105,21 @@ export default {
       {
         icon: 'looks_3',
         text: '三年级',
-        exams: [],
+        exams: [
+          {
+            icon: 'launch',
+            title: '两位数加两位数（超过100）',
+            count: 100,
+            // eslint-disable-next-line
+            refreshCallback: () => {
+              return utils.makeExamGenerator(
+                utils.genAddWithTwoOperands,
+                {min: 10, max: 99},
+                {min: 100, max: 198}
+              );
+            },
+          },
+        ],
       },
       {
         icon: 'looks_4',
