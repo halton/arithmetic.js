@@ -63,6 +63,9 @@ import ExamCollectByGrade from '@/components/ExamCollectByGrade';
 import ExamContent from '@/components/ExamContent';
 import ExamContentToolbar from '@/components/ExamContentToolbar';
 
+import { readFileSync } from 'fs';
+import Problem from '../problem';
+
 export default {
   data: () => ({
     drawer: true,
@@ -88,6 +91,11 @@ export default {
       if (newClosure) {
         this.contentUpdateClosure = newClosure;
       }
+
+      // const lines = readFileSync('../problems/problem_two_digit_add_under_100.json', 'utf8');
+      // const json = JSON.parse(readFileSync('../problems/problem_two_digit_add_under_100.json', 'utf8'));
+      const json = JSON.parse("{        \"name\": \"test\",        \"result\": {          \"min\": 1, \"max\": 100        },        \"operands\": [ { \"min\": 1, \"max\": 99 },    { \"min\": 1, \"max\": 99 } ],  \"operators\": [    { \"allowed\": [ \"+\", \"-\" ] }  ]}");
+      const p = new Problem(json);
 
       this.onRefresh();
       this.drawer = false;

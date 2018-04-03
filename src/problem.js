@@ -1,39 +1,58 @@
 import * as utils from './utils';
-
-class Operator {
-  constructor(opt) {
-    this.opt = opt;
-  }
-
-  toString() {
-    switch (this.opt) {
-      case '+':
-      case '-':
-        return this.opt;
-      case '*':
-        return 'x';
-      case '/':
-        return '÷';
-      default:
-        return `invalid operator ${this.opt}`;
-    }
-  }
-}
+import Range from './range';
 
 export default class Problem {
-  constructor(name, numOfOperands, allowdOperators, min, max) {
-    this.name = name;
-    this.numOfOperands = numOfOperands;
-    this.allowdOperators = allowdOperators;
-    this.min = min;
-    this.max = max;
+  constructor(json) {
+    this.name = json.name;
+    this.result = new Range(json.result.min, json.result.max);
+
+    this.operands = [];
+    for (let i = 0; i < json.operands.length; i += 1) {
+      this.operands.push(new Range(json.operands[i].min, json.operands[i].max));
+    }
+
+    this.operators = [];
+    for (let i = 0; i < json.operators.length; i += 1) {
+      const opts = [];
+      for (let j = 0; j < json.operators[i].allowed.length; j += 1) {
+        opts.push(json.operators[i].allowed[j]);
+      }
+      this.operators.push(opts);
+    }
   }
 
-  toString() {
-    return `${this.operands[0]} ${this.operators[0]} ${this.operands[1]} = ______`;
+  randomToString() {
+    return `To be supported.`;
+  }
+
+  * idMaker() {
+    let index = 0;
+    while (true) {
+      yield index++;
+    }
   }
 
   random() {
+    for (i = 0; i <= this.operands.length; i += 2) {
+      let g1 = this.operands[i].next.value;
+      let g2 = this.operands[i + 1].next.value;
+
+      let result = 0;
+      switch (this.operators[i]) {
+        case '+':
+          result = g1 + g2;
+          break;
+        case '-':
+          result = g1 - g2;
+        case 'x':
+          result = g1 * g2;
+        case '÷':
+          result = g1 / g2;
+      }
+    }
+    for (let operand of this.operands) {
+      console.log(value);
+    }
     const randomOperands = [];
     const randomOperators = [];
 
