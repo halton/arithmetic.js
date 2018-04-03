@@ -51,8 +51,8 @@ export default {
             refreshCallback: () => {
               return utils.makeExamGenerator(
                 utils.genAddWithTwoOperands,
-                {min: 1, max: 99},
-                {min: 2, max: 100}
+                { min: 1, max: 99 },
+                { min: 2, max: 100 },
               );
             },
           },
@@ -63,8 +63,8 @@ export default {
             refreshCallback: () => {
               return utils.makeExamGenerator(
                 utils.genSubWithTwoOperands,
-                {min: 1, max:99},
-                {min: 2, max:99}
+                { min: 1, max: 99 },
+                { min: 2, max: 99 },
               );
             },
           },
@@ -81,7 +81,7 @@ export default {
             refreshCallback: () => {
               return utils.makeExamGenerator(
                 utils.genMultiWithTwoOperands,
-                {min:2, max: 9});
+                { min: 2, max: 9 });
             },
           },
           { icon: 'launch',
@@ -114,8 +114,8 @@ export default {
             refreshCallback: () => {
               return utils.makeExamGenerator(
                 utils.genAddWithTwoOperands,
-                {min: 10, max: 99},
-                {min: 100, max: 198}
+                { min: 10, max: 99 },
+                { min: 100, max: 198 },
               );
             },
           },
