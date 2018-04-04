@@ -25,13 +25,6 @@ export default class Problem {
     return `To be supported.`;
   }
 
-  * idMaker() {
-    let index = 0;
-    while (true) {
-      yield index++;
-    }
-  }
-
   random() {
     for (i = 0; i <= this.operands.length; i += 2) {
       let g1 = this.operands[i].next.value;
