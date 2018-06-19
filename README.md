@@ -2,9 +2,9 @@
 
 # Arithmetic.js
 
-这是一个基于[Vue.js](https://vuejs.org/)的项目，用来自动小学生用来练习的口算习题，用户可以试用[在线版本](https://tinyurl.com/arithmetic-js), 感谢[Red Hat® OpenShift](https://www.openshift.com/)提供的免费服务器。
+这是一个基于[Vue.js](https://vuejs.org/)的项目，用来自动小学生用来练习的口算习题，用户可以试用[在线版本](http://niuwabang.net), 感谢[Red Hat® OpenShift](https://www.openshift.com/)提供的免费服务器。
 
-This is a simple [Vue.js](https://vuejs.org/) based project to auto-gen elementary arithmetic exercises, and support print. It is very useful for entry level elementary students. You could try the [live version](https://tinyurl.com/arithmetic-js). Thanks for the free service supporting of [Red Hat® OpenShift](https://www.openshift.com/).
+This is a simple [Vue.js](https://vuejs.org/) based project to auto-gen elementary arithmetic exercises, and support print. It is very useful for entry level elementary students. You could try the [live version](http://niuwabang.net). Thanks for the free service supporting of [Red Hat® OpenShift](https://www.openshift.com/).
 
 ## Why (为什么有这样一个网站)
 * 背景：中国的小学生教育很重口算教育，孩子从一年级（甚至幼儿园）开始就要进行口算练习。
